@@ -29,7 +29,7 @@
 ```
 name = "John Doe"
 age = 21
-print("My name is " + name + " and I have " + age + " years")
+print("My name is " + name + " and I am " + age + " years old")
 ```
 
 ### Atentie la import-uri
@@ -55,7 +55,7 @@ My name is not John Doe
 
 Pentru a rezolva problema codului rulat la import, se pune codul intr-o functie si se apeleaza functia intr-un if 
 `if __name__ == "__main__":`
-Deci a.py v-a arata astfel:
+Deci a.py va arata astfel:
 ```
 def printJohn():
     name = "John Doe"
