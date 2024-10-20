@@ -51,6 +51,7 @@ int main() {
         std::cout << x << " ";
     std::cout<<"\n";
 
+
     // SIRURI DE CARACTERE
     const std::string sentence = "This!!!! .Is a,,,!? test sentence?..  ";
     std::cout<<processSentence(sentence);
