@@ -19,17 +19,23 @@ print(t, end = "\n\n")
 print(sum([int(digits[i]) for i in range(len(digits)) if digits[i].isdigit()]), end = "\n\n")
 
 
-# 3. Square numbers from 1 to n
+# 3. Divisors of a number
+number = 962
+t = [x for x in range(2, number // 2 + 1) if not(number % x)]
+print(t, end = "\n\n")
+
+
+# 4. Square numbers from 1 to n
 t = [x ** 2 for x in range(int(n ** (1 / 2)) + 1)]
 print(t, end = "\n\n")
 
 
-# 4. Remove vowels from every word in a sentence
+# 5. Remove vowels from every word in a sentence
 t = " ".join(["".join([c for c in word if c not in "aeiouAEIOU"]) for word in sentence.split()])
 print(t, end = "\n\n")
 
 
-# 5. Delete duplicates
+# 6. Delete duplicates
 aux = nums2.copy() # CAREFUL "aux = nums2"!
 i, n = 0, len(aux)
 while i < n:
@@ -41,12 +47,12 @@ while i < n:
 print(aux, end = "\n\n")
 
 
-# 6. Sort a list by the number of even digits
+# 7. Sort a list by the number of even digits
 t = sorted(nums3, key = lambda x: len([c for c in str(x) if not(int(c) & 1)]))
 print(t, end = "\n\n")
 
 
-# 7. Return the missing number in [1..n]
+# 8. Return the missing number in [1..n]
 t = [i for i in range(1, 26)] # numbers from 1 to 25
 del t[14] # 15 is now missing
 
@@ -57,15 +63,15 @@ for i in range(len(t)):
 print(missing, end = "\n\n")
 
 
-# 8. Return the sum of the elements until the first 0.
+# 9. Return the sum of the elements until the first 0.
 print(sum(nums2[:nums2.index(0)]), end = "\n\n")
 
 
-# 9. Find the 2nd largest element (duplicates allowed)
+# 10. Find the 2nd largest element (duplicates allowed)
 print(sorted(nums2)[-2], end = "\n\n")
 
 
-# 10. Find all pairs that sum up to a target (don't repeat the same elements)
+# 11. Find all pairs that sum up to a target (don't repeat the same elements)
 suma = 5
 i, j = 0, len(nums2) - 1
 nums2.sort()
@@ -83,21 +89,21 @@ print("\n")
 # print([(nums2[i], nums2[j]) for i in range(len(nums2)) for j in range(i + 1, len(nums2)) if nums2[i] + nums2[j] == sum])
 
 
-# 11. Circular permutations
+# 12. Circular permutations
 print([nums1[i:] + nums1[:i] for i in range(len(nums1))], end = "\n\n")
 
 
-# 12. Sum of odd digits for a number
+# 13. Sum of odd digits for a number
 x = 18027592
 print(sum([int(c) for c in str(x) if int(c) & 1]), end = "\n\n")
 
 
-# 13. Reverse sort a list of lists by the average of the numbers
+# 14. Reverse sort a list of lists by the average of the numbers
 t = sorted(nums4, key = lambda x: -(sum(x) / len(x)))
 print(t, end = "\n\n")
 
 
-# 14. Delete all the digits/numbers between the first two 0-digits in a list of numbers
+# 15. Delete all the digits/numbers between the first two 0-digits in a list of numbers
 nums5 = " ".join([str(x) for x in nums5])
 try:
     index_1 = nums5.index("0")
@@ -108,9 +114,10 @@ try:
         print([int(x) for x in nums5.split()])
 except ValueError:
     print([int(x) for x in nums5.split()])
+print()
 
 
-# 15. Line swapping in a matrix - (i, i+1), (i+2, i+3), ...
+# 16. Line swapping in a matrix - (i, i+1), (i+2, i+3), ...
 n = len(matrix)
 for i in range(1, n, 2):
     matrix[i], matrix[i - 1] = matrix[i - 1], matrix[i]
