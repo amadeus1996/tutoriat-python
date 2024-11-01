@@ -1,0 +1,3 @@
+Ana,20
+Bogdan,30
+Carmen,28
