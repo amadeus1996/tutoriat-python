@@ -190,87 +190,97 @@ R:
 
 > **Disclaimer**: Aceste cerinte au fost preluate din modele de examene si colocvii, dar sunt usor modificate astfel incat sa includa doar materia studiata pana acum.
 
+___
+
 1. Descompuneti un numar natural <b>(n>=2)</b> in factori primi si stocati rezultatul intr-un dictionar de forma <b>{divizor_prim:exponent}</b>.
 
-```n = 1932```
+        n = 1932
 
-```{2: 2, 3: 1, 7: 1, 23: 1}```
+        {2: 2, 3: 1, 7: 1, 23: 1}
+        
+___
 
 2. Fiind dat un sir de cuvinte separate prin spatii, sa se creeze un dictionar de dictionare de forma <b>{cuvant: {litera: frecventa}}</b>. Cuvintele din sir se pot repeta.
 
-```sir = "teste programare teste"``` 
+        sir = "teste programare teste"
 
-```{'teste': {'t': 4, 'e': 4, 's': 2}, 'programare': {'p': 1, 'r': 3, 'o': 1, 'g': 1, 'a': 2, 'm': 1, 'e': 1}}```
+        {'teste': {'t': 4, 'e': 4, 's': 2}, 'programare': {'p': 1, 'r': 3, 'o': 1, 'g': 1, 'a': 2, 'm': 1, 'e': 1}}
+        
+___
 
 3. Se da o lista de numere naturale. Sa se creeze un dictionar de forma <b>{numar: (divizori)}</b>, care stocheaza pentru fiecare numar divizorii sai proprii intr-un tuplu.
 
-```nums = [50, 21, 13, 84, 50, 60]```
+        nums = [50, 21, 13, 84, 50, 60]
 
-```{50: (2, 5, 10, 25), 21: (3, 7), 13: (), 84: (2, 3, 4, 6, 7, 12, 14, 21, 28, 42), 60: (2, 3, 4, 5, 6, 10, 12, 15, 20, 30)}```
+        {50: (2, 5, 10, 25), 21: (3, 7), 13: (), 84: (2, 3, 4, 6, 7, 12, 14, 21, 28, 42), 60: (2, 3, 4, 5, 6, 10, 12, 15, 20, 30)}
+        
+___
 
 4. Se da un set de numere intregi si un tuplu de liste formate din numere intregi. Sa se stocheze intr-un dictionar perechi de forma <b>{numar: [(indice, frecventa)]}</b>, unde <b>numar</b> e un numar din set, iar lista contine tupluri cu indicii listelor (incepand de la 0) care contin numarul (si frecventa lui).
 
-```nums1 = {10, 20, 14}, nums2 = ([10, 11, 10], [20, 20, 40], [5], [10, 11])```
+        nums1 = {10, 20, 14}, nums2 = ([10, 11, 10], [20, 20, 40], [5], [10, 11])
 
-```{10: [(0, 2), (3, 1)], 20: [(1, 2)], 14: []}```
+        {10: [(0, 2), (3, 1)], 20: [(1, 2)], 14: []}
+
+___
 
 5. Se da o lista de numere naturale. Sa se stocheze informatii intr-un dictionar cu structura <b>{medie: [numere]}</b>, unde <b>[numere]</b> este o lista formata din numerele care au media aritmetica a cifrelor egala cu <b>medie</b>. Listele de numere trebuie sa fie sortate in ordine descrescatoare.
 
-```nums = [82375, 201, 51, 73, 3456, 2855, 1021, 90, 153]```
+        nums = [82375, 201, 51, 73, 3456, 2855, 1021, 90, 153]
 
-```{5.0: [82375, 2855, 73], 1.0: [1021, 201], 3.0: [153, 51], 4.5: [3456, 90]}```
+        {5.0: [82375, 2855, 73], 1.0: [1021, 201], 3.0: [153, 51], 4.5: [3456, 90]}
+        
+___
 
 6. Se da o lista de numere naturale. Sa se stocheze intr-un dictionar perechi de forma <b>{numar: [(cifra, frecventa)]}</b>.
 
-```nums = [1011, 234, 8158558, 234]```
+        nums = [1011, 234, 8158558, 234]
 
-```{1011: [(1, 3), (0, 1)], 234: [(3, 1), (4, 1), (2, 1)], 8158558: [(1, 1), (8, 3), (5, 3)]}```
+        {1011: [(1, 3), (0, 1)], 234: [(3, 1), (4, 1), (2, 1)], 8158558: [(1, 1), (8, 3), (5, 3)]}
+        
+___
 
 7. Se da un sir de cuvinte separate prin spatii. Sa se stocheze intr-un dictionar perechi de forma <b>{palindrom: [vocale SAU consoane]}</b>. Se vor selecta doar palindromurile din sir, iar lista va fi formata din vocalele din cuvant (fara duplicate) daca numarul de vocale e mai mare decat numarul de consoane (sau egal); altfel, lista va fi formata din consoane.
 
-```sir = "asa merem palindrom "```
+        sir = "asa merem palindrom "
 
-```{'asa': ['a'], 'merem': ['m', 'r']}```
+        {'asa': ['a'], 'merem': ['m', 'r']}
+        
+___
 
 8. Fisierul <b>"text.in"</b> contine, pe mai multe linii, propozitii in care cuvintele sunt despartite prin spatii si semnele de punctuatie uzuale. Sa se scrie in fisierul <b>"text.out"</b> literele din textul dat si frecventele lor relative. Frecventa relativa a unei litere intr-un text este egala cu raportul dintre frecventa sa in textul respectiv si numarul total de litere din acel text. Literele si frecventele vor fi scrise in fisierul <b>"text.out"</b>. Nu se va face distinctie intre litere mici si litere mari.
 
-```
-text.in
-Ana are multe pere si mere,
-dar are mai multe mere
-decat pere si prune
-mai multe decat pere.
-```
+        text.in
+        Ana are multe pere si mere,
+        dar are mai multe mere
+        decat pere si prune
+        mai multe decat pere.
 
-```
-text.out
-a: 0.125
-n: 0.028
-r: 0.125
-e: 0.250
-m: 0.097
-u: 0.056
-l: 0.042
-t: 0.069
-p: 0.056
-s: 0.028
-i: 0.056
-d: 0.042
-c: 0.028
-```
+        text.out
+        a: 0.125
+        n: 0.028
+        r: 0.125
+        e: 0.250
+        m: 0.097
+        u: 0.056
+        l: 0.042
+        t: 0.069
+        p: 0.056
+        s: 0.028
+        i: 0.056
+        d: 0.042
+        c: 0.028
+
+___
 
 9. Fisierul <b>"numere.in"</b> contine, pe mai multe linii, numere naturale despartite intre ele prin spatii. Sa se creeze o lista de subliste, unde o sublista contine numerele de pe un rand. Apoi, sa se elimine din fiecare sublista fiecare aparitie a valorii minime (valoarea minima specifica acelei subliste), iar in final sa se pastreze doar primele N elemente (unde N e lungimea minima a unei subliste, odata ce s-au eliminat valorile minime din toate sublistele). Sublistele rezultante vor fi scrise pe randuri diferite in fisierul <b>"numere.out"</b>.
 
-```
-numere.in
-100 54 101 54 2 81 92
-10 1 1 2 2 1 70
-12 81 10 8 9 8 10
-```
-
-```
-numere.out
-100 54 101 54 
-10 2 2 70 
-12 81 10 9 
-```
+        numere.in
+        100 54 101 54 2 81 92
+        10 1 1 2 2 1 70
+        12 81 10 8 9 8 10
+        
+        numere.out
+        100 54 101 54 
+        10 2 2 70 
+        12 81 10 9 
