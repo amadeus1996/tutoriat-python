@@ -5,8 +5,8 @@
 - [Hash Tables](#hash-tables)
 - [Seturi](#seturi)
 - [Dicționare](#dictionare)
-- [Exerciții (part 1)](#exerciții)
-- [Exerciții (part 2)](#exercitii-din-examene-colocvii)
+- [Exerciții (part 1)](#exercitii-introductive)
+- [Exerciții (part 2)](#exercitii-din-examene-si-colocvii)
 
 ## Introducere
 În acest tutoriat, vom explora trei structuri de date esențiale în Python: **hash tables**, **seturi** și **dicționare**. Aceste structuri sunt similare cu cele din C++ (precum `unordered_map` și `set`), dar sunt mult mai ușor de utilizat în Python, datorită sintaxei simplificate și funcțiilor integrate.
@@ -161,7 +161,7 @@ print(varste.get("Popa", "Necunsocut")) # Necunoscut
 ```
 
 
-## Exercitii
+## Exercitii introductive
 
 1. Numără elementele unice: Creează un program care citește o listă de numere și folosește un set pentru a elimina duplicatele. Afișează setul și numărul elementelor unice.
 Ex: `1, 2, 3, 4, 2, 2, 4, 6, 7, 1`
@@ -186,7 +186,7 @@ R:
 
 5. Dicționar de studenți: Creează un dicționar care stochează numele studenților și nota lor la un examen. Scrie funcții care adaugă un nou student, actualizează nota unui student existent și calculează media notelor.
 
-## Exercitii din examene/colocvii
+## Exercitii din examene si colocvii
 
 > **Disclaimer**: Aceste cerinte au fost preluate din modele de examene si colocvii, dar sunt usor modificate astfel incat sa includa doar materia studiata pana acum.
 
