@@ -37,8 +37,13 @@ Odata ce nu mai este nevoie de fisier, acesta va trebui inchis separat. Totusi, 
 - <b>"a" (append)</b>: fisierul poate fi utilizat doar pentru a scrie date in el. Daca fisierul exista, atunci datele se vor scrie imediat dupa ultimul sau caracter; altfel, se va crea un fisier nou unde se vor scrie datele de la inceput.
 
 ## Liste
+Listele sunt colectii de date <b>ordonate</b> (se pastreaza ordinea in care au fost inserate elementele). Acestea sunt <b>mutabile</b> (se pot insera si sterge elemente, se pot modifica elemente). Listele pot stoca mai multe tipuri de date - de exemplu <b>"t = [0, "sir", True, [1, 2, 3], (5, 6)]"</b> ar fi o lista valida.
 
-momentan mi-e putin asa sa fac teoria aici, dar va prezentam teoria la tutoriat ca lumea (si mai gasiti teorie prin pdf-ul ala)
+Accesarea elementelor se realizeaza prin <b>indecsi</b>, care pot fi negativi sau pozitivi. Cu indecsii pozitivi ar trebui sa fiti familiari - indexarea incepe de la 0; cei negativi incep de la -1 si acceseaza elementele in ordine inversa, deci indexul -1 o sa acceseze ultimul element, -2 o sa acceseze penultimul element s.a.m.d. De asemenea, se pot aplica <b>sliceuri</b> (la fel ca la siruri de caractere): presupunand ca am avea lista <b>t = [1, 2, 3, 4, 5, 6, 7, 8]</b>, <b>t[2:6]</b> ar accesa elementele incepand de la indexul 2 pana la indexul 5 (range-ul nu il include pe 6), returnand [3, 4, 5, 6], iar <b>t[-8:-3:2]</b> ar returna elementele de la indexul -8 pana la -4 (cu pasul 2) => [1, 3, 5].
+
+In principal, se va pune accentul in special pe <b>list comprehension</b>, o unealta foarte utila pentru crearea listelor. De exemplu, pentru generarea numerelor pare de la 1 la 15 s-ar putea folosi o secventa de initializare precum <b>t = [x for x in range(2, 15, 2)]</b>; selectarea patratelor perfecte din lista de numere <b>nums = [1, 3, 4, 16, 20, 25, 39, 49, 58]</b> s-ar putea scrie ca <b>t = [x for x in nums if x ** (1/2) == int(x ** (1/2))]</b>. Exista diverse moduri de scriere si detalii, dar s-au implementat multe exemple la tutoriat (exercitiile rezolvate le gasiti si aici, pe GitHub).
+
+Reamintim ca unele din principalele metode pentru liste sunt <b>append</b> (adaugarea unui element), <b>remove</b> (stergerea unui element dupa valoare), <b>index</b> (prima pozitie gasita pentru un element de la stanga la dreapta), <b>pop</b> (stergea unui element dupa index, implicit sterge ultimul element), <b>insert</b> (inserarea unui element la un anumit index) si <b>length</b> (returneaza lungimea unei liste).
 
 ## Exercitii
 
