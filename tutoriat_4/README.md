@@ -1,19 +1,13 @@
 # Tutoriat 4
 
 ## Table of contents
-- [Introducere](#1---introducere)
-- [Functii](#2---functii)
-- [Functii lambda](#3---functii-lambda)
-- [Sortari](#4---sortari)
+- [Functii](#1---functii)
+- [Functii lambda](#2---functii-lambda)
+- [Sortari](#3---sortari)
 
-## 1 - Introducere
-In acest tutoriat vom trece prin <b>functii</b>, <b>sortari</b> si <b>functii lambda</b>, explorand sintaxa, particularitati, exemple practice si alte diverse detalii.
+## 1 - Functii
 
-___
-
-## 2 - Functii
-
-### <ins>2.1 - Notiuni introductive</ins>
+### <ins>1.1 - Notiuni introductive</ins>
 Functiile le stiti deja din <b>C++</b> (sau orice alt limbaj studiat pana acum): o functie este un set de instructiuni ce efectueaza o sarcina specifica; aceste instructiuni sunt scrise sub un nume unic si pot fi apelate. Functiile sunt doar o utilitate disponibila pentru organizarea unui program - ele pot modifica date, scrie date in fisiere, afisa date pe consola, etc.
 
 Principalul avantaj al functiilor este ca grupeaza blocuri reutilizabile de cod, pentru a evita rescrierea continua a codului si pentru a minimiza numarul de linii intr-un mod accesibil, oferind ordine si claritate. Subliniez faptul ca organizarea eficienta a codului este o cerinta imperativa in orice subdomeniu al programarii.
@@ -34,8 +28,24 @@ Este de tinut minte faptul ca nu este necesar ca tipul de date returnat sau tipu
         ...instructiuni...
 
 Evident, argumentele sunt optionale - o functie poate sa nu aiba parametri.
+
+### <ins>1.2 - Ce returneaza o functie?</ins>
+Functiile din <b>Python</b> pot returna orice tip de date; mai important este faptul ca pot returna mai multe valori. De exemplu, instructiunea "<b>return x</b>" este intuitiva, dar exista si posibilitatea de a scrie instructiuni precum "<b>return x, y, z</b>".
+
+Din acest motiv, exista 2 tipuri de date returnate: <b>valori individuale</b> (o functie poate sa returneze un int, o lista, un dictionar, un bool, o structura definita de noi) sau <b>tupluri de date</b> (cand se returneaza mai multe lucruri, sunt stocate intr-un tuplu care este apoi returnat de functie).
+
+    def f(t):
+        return [-x for x in t]
+
+    def g(sir):
+        aux = sir.split()
+        return aux, len(aux), aux[-1]
     
-### <ins>2.2 - Tipuri de parametri</ins>
+    print(f([1, 3, 6])) # [-1, -3, -6]
+    print(g("Text sample")) # (["Text", "sample"], 2, "sample")
+
+    
+### <ins>1.3 - Tipuri de parametri</ins>
 * <b>Parametri simpli</b>: sunt doar niste argumente obisnuite; o functie cu <b>n</b> parametri simpli va avea tot <b>n</b> argumente in apelul acesteia.
 
         def printString(s):
@@ -146,7 +156,7 @@ Evident, argumentele sunt optionale - o functie poate sa nu aiba parametri.
         def f(*args, n):
             return sum([x % n for x in args if type(x) == int])
 
-### <ins>2.3 - Transmiterea parametrilor</ins>
+### <ins>1.4 - Transmiterea parametrilor</ins>
 In <b>C++</b> parametrii pot fi transmisi in 2 moduri - prin <b>valoare</b> (se transmite o copie a valorii parametrului, deci modificarile asupra acestuia nu se reflecta in exterior) sau prin <b>referinta</b> (se transmite adresa parametrului, deci modificarile efectuate in interior sunt vazute in exterior).
 
 In <b>Python</b>, transmiterea parametrilor are loc intr-un stil mai diferit, care combina cele 2 metode: <b>transmitere prin referinta la obiect</b> (call by object reference).
@@ -208,7 +218,7 @@ Revenind la subiectul initial - cand o functie primeste un parametru, ea de fapt
     f2(t)
     print(t) # [0, 3, 10]
 
-### <ins>2.4 - Variabile locale si globale</ins>
+### <ins>1.5 - Variabile locale si globale</ins>
 <b>Variabilele locale</b> sunt cele declarate in interiorul functiilor. Acestea nu pot fi accesate in afara functiei (sunt sterse odata ce functia si-a terminat apelul).
 
     def f():
@@ -258,7 +268,7 @@ Cuvantul cheie "<b>global</b>" urmat de numele unei variabile este utilizat pent
     f()
     print(nums)
 
-### <ins>2.5 - Functii imbricate</ins>
+### <ins>1.6 - Functii imbricate</ins>
 O functie poate fi definita si apelata in interiorul altei functii; de exemplu, daca in interiorul functiei <b>f</b> definim functia <b>g</b>, atunci vom putea accesa functia <b>g</b> doar din interiorul lui <b>f</b>, nu si din exterior (in programul principal). Acestea se numesc <b>functii imbricate</b>.
 
 O functie imbricata are access la parametrii functiei din care face parte si la variabilele locale ale functiei respective. Totusi, aceasta nu poate modifica variabilele locale ale functiei parinte; se va genera o eroare daca se incearca. Pentru a rezolva aceasta problema, se poate utiliza cuvantul cheie "<b>nonlocal</b>" impreuna cu numele variabilei locale; se va cauta definirea variabilei respective in cel mai apropiat spatiu exterior functiei imbricate (in afara de cel global), iar variabila va putea fi modificata.
@@ -288,8 +298,8 @@ Ca si ultim detaliu, functiile imbricate se pot privi in felul urmator: consider
 
 ___
 
-## 3 - Functii lambda
-O <b>functie lambda</b> este o functie fara nume, cu unul sau mai multi parametri, care returneaza o valoare furnizata de o singura expresie; ele nu pot contine instructiuni sau mai multe expresii.
+## 2 - Functii lambda
+O <b>functie lambda</b> este o functie fara nume, cu unul sau mai multi parametri, care returneaza o valoare furnizata de o singura expresie; ele nu pot contine instructiuni sau mai multe expresii, sunt scurte si nu mai pot fi apelate in alte parti din program (pentru ca nu au nume).
 
 Vor fi utilizate cel mai mult in <b>sortari</b> (urmatoarea sectiune).
 
@@ -319,4 +329,115 @@ Vor fi utilizate cel mai mult in <b>sortari</b> (urmatoarea sectiune).
  
 ___
 
-## 4 - Sortari
+## 3 - Sortari
+In general, sortarile se vor aplica asupra datelor stocate in liste (dar si asupra altor colectii de date). Exista numeroase criterii de sortare in practica - de exemplu, lista de note pentru un student ar putea fi sortata crescator dupa valorile notelor, iar studentii ar putea sa fie sortati descrescator dupa media aritmetica a notelor.
+
+Niste evenimente ar putea sa fie sortate crescator dupa data (pentru a vedea care vor avea loc cel mai devreme), apoi dupa pret (daca au loc in aceeasi data, le vom vedea mai intai pe cele mai ieftine) si descrescator dupa durata (daca au aceeasi data si acelasi pret, vedem care sunt estimate sa dureze cel mai mult). Dupa cum se poate observa, se pot aplica mai multe criterii de sortare in acelasi timp, iar ordinea acestor criterii conteaza.
+
+Sunt 2 metode predefinite pentru sortari - <b>sort()</b> si <b>sorted()</b>; ele sunt folosite in functie de situatie. Metoda <b>sort</b> modifica datele originale (in-place) si n-are nevoie de atribuiri, in timp ce <b>sorted()</b> returneaza o noua lista cu datele sortate si nu modifica datele originale.
+
+De asemenea, exista parametrul <b>reverse</b> care poate avea valoarea "True" sau "False" (datele pot fi sortate in ordine crescatoare sau descrescatoare).
+
+    a = ["un", "text", "scurt", "si", "neordonat"]
+    
+    a.sort()
+    print(a) # ["neordonat", "scurt", "si", "text", "un"]
+    
+    # -------------------------------------------
+    
+    b = [1, 4, 0, 6]
+    
+    sorted(b, reverse = True)
+    
+    print(sorted(b, reverse = True)) # [6, 4, 1, 0]
+    print(b) # ce se afiseaza aici?
+    
+    # -------------------------------------------
+    
+    c = [True, -3.14, (False,)]
+    
+    # ce se intampla pentru ambele variante?
+    
+    # c.sort()
+    
+    # print(sorted(c))
+    
+    # -------------------------------------------
+    
+    d = (6, 12, 8)
+    
+    # ce se intampla pentru ambele variante?
+    
+    # d.sort()
+    
+    # print(sorted(d))
+    
+    # -------------------------------------------
+    
+    e = {
+        'x': 20,
+        'h': 10,
+        'a': 50,
+        'v': 18,
+        'o': 20
+    }
+    
+    # ce se intampla pentru ambele variante?
+    
+    # e.sort()
+    
+    # print(sorted(e))
+    
+Pentru a putea aplica diverse criterii de sortare in acelasi timp, aici intervine parametrul optional <b>key</b>, caruia ii atribuim o functie cu scopul de a asocia o cheie fiecarui element. De exemplu, in cazul in care vrem sa sortam niste numere intregi in functie de numarul de cifre, numarul "101" va avea cheia "3" (3 cifre), "0" va avea cheia "1", "1555" va avea cheia "4" si asa mai departe. Daca vrem sa sortam in functie de suma cifrelor, atunci numarul "903" va avea cheia "12".
+
+In folosirea parametrului <b>key</b>, i se pot atribui si functii normale, dar si <b>functii lambda</b> (aceasta este o utilitate practica a functiilor lambda).
+
+    def f(t):
+        # ce criteriu de sortare este acesta?
+        return len(set(str(t)))
+
+    a = [55, 14, 1342, 3, 922, 13003103]
+    print(sorted(a, key = f)) # [55, 3, 14, 922, 13003103, 1342]
+    
+    # -------------------------------------------
+    
+    b = ["un", "sir", "mai", "scurt"]
+
+    b.sort(key = lambda x: x[-1])
+    print(b) # ce se afiseaza? care e criteriul de sortare?
+    
+    # -------------------------------------------
+    
+    c = (10, "e"), (15, "c"), (10, "b"), (15, "a"), (8, "h"), (11, "e"), (8, "x")
+    
+    # aici sunt mai multe detalii
+    print(sorted(c, key = lambda x: (-sum([int(y) for y in str(x[0])]), x[1])))
+    
+    # in primul rand, observati cum am omis parantezele
+    # datele sunt separate doar prin virgula
+    # cu aceasta sintaxa, am facut un tuplu care sa contina toate acele date
+    # deci "c" e un tuplu
+    
+    # am folosit "sorted"
+    # "sort" nu merge pe tupluri (nu poti modifica datele unui tuplu)
+    
+    # s-au folosit 2 criterii de sortare (intre paranteze, separate prin virgula)
+    # deci acea functie lambda returneaza un tuplu cu 2 valori
+    # mai intai, se foloseste prima cheie
+    # daca pentru 2 valori sunt egale cheile, se trece la a doua cheie 
+    
+    # prima cheie calculeaza suma cifrelor unui numar intreg
+    # dar am pus un "-" fix inainte de rezultat
+    # acel "-" face o sortare inversa (un fel de "reverse = True")
+    # de ce functioneaza asa?
+    # pt ca: [20, 15] devine [2, 6] care devine [-2, -6] => sortarea e [-6, -2]
+    # iar [-6, -2] e [15, 20]
+    
+    # daca valorile sunt egale pentru prima cheie, se trece la a doua
+    # a doua cheie sorteaza dupa al doilea element din tuplu
+    # adica se sorteaza sirurile crescator
+    
+    # in final ce se afiseaza?
+    # [(8, 'h'), (8, 'x'), (15, 'a'), (15, 'c'), (11, 'e'), (10, 'b'), (10, 'e')]
+    
+    
