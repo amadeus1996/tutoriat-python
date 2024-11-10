@@ -4,6 +4,7 @@
 - [Functii](#1---functii)
 - [Functii lambda](#2---functii-lambda)
 - [Sortari](#3---sortari)
+- [Exercitii](4---exercitii)
 
 ## 1 - Functii
 
@@ -440,4 +441,12 @@ In folosirea parametrului <b>key</b>, i se pot atribui si functii normale, dar s
     # in final ce se afiseaza?
     # [(8, 'h'), (8, 'x'), (15, 'a'), (15, 'c'), (11, 'e'), (10, 'b'), (10, 'e')]
     
-    
+## 4 - Exercitii
+1. Definiti o functie care primeste un numar variabil de parametri (numere intregi) si returneaza suma si produsul lor. Apelati functia si afisati rezultatul.
+2. Definiti o functie cu 2 parametri: o lista si un numar intreg <b>n</b> cu valoarea implicita 1. Functia doar modifica lista, astfel incat sa fie sterse ultimele <b>n</b> elemente. Daca numarul de elemente care sa fie sterse e mai mare decat numarul de elemente din lista, se vor sterge toate elementele din lista.
+3. Definiti o functie care sa returneze numarul de permutari posibile, daca se primesc <b>n</b> numere. Formula pentru permutari este <b>n!</b>, si se vor folosii functii imbricate: se va defini o functie care returneaza factorialul unui numar, in interiorul functiei principale.
+4. Definiti o functie care primeste un sir ca si parametru, returnand numarul de vocale din sir.
+5. Definiti o functie care sa sorteze cuvintele dintr-o propozitie descrescator dupa numarul de vocale. Aceasta functie va primi 2 parametri: un sir de cuvinte separate prin spatii si o alta functie. Functia va returna noul sir sortat. Apelati functia, transmitand ca si parametru functia definita la exercitiul 3.
+6. Apelati functia de la exercitiul 4, transmitand ca si parametru o functie lambda.
+7. Sortati o lista de numere intregi crescator dupa numarul de cifre, iar in caz de egalitate, descrescator dupa ultima cifra, iar apoi (in caz de egalitate) crescator dupa suma cifrelor impare. Apelati metoda <b>sort</b>, utilizand o <b>functie lambda</b> ca si cheie.
+8. Se da o propozitie (cuvinte separate prin spatii). Sortati descrescator dupa prima litera, iar in caz de egalitate, crescator dupa ultima litera (<b>sort</b> si <b>functii lambda</b>).
