@@ -4,7 +4,7 @@
 - [Functii](#1---functii)
 - [Functii lambda](#2---functii-lambda)
 - [Sortari](#3---sortari)
-- [Exercitii](4---exercitii)
+- [Exercitii](#4---exercitii)
 
 ## 1 - Functii
 
@@ -94,13 +94,13 @@ Din acest motiv, exista 2 tipuri de date returnate: <b>valori individuale</b> (o
         def afisare_type(varsta: int, nume: str = "anonim") -> None:
             print(f"Varsta: {varsta}\nNume: {nume}\n")
             
-        afisare(18) # apel corect
+        afisare_type(18) # apel corect
         
-        afisare(22, "Dana") # apel corect
+        afisare_type(22, "Dana") # apel corect
         
         # ce se intampla aici?
-        afisare("Nume")
-        afisare()
+        afisare_type("Nume")
+        afisare_type()
         
         # --------------------------------------------
         
@@ -154,7 +154,7 @@ Din acest motiv, exista 2 tipuri de date returnate: <b>valori individuale</b> (o
         # -------------------------------------------
         
         # cum credeti ca se apeleaza aceasta functie?
-        def f(*args, n):
+        def g(*args, n):
             return sum([x % n for x in args if type(x) == int])
 
 ### <ins>1.4 - Transmiterea parametrilor</ins>
@@ -164,14 +164,23 @@ In <b>Python</b>, transmiterea parametrilor are loc intr-un stil mai diferit, ca
 
 In primul rand, toate variabilele din Python sunt doar niste referinte catre obiecte in memorie. Cand avem, de exemplu, "<b>x = 2</b>", <b>x</b> este o referinta catre adresa unui obiect din memorie. Daca vrem sa ii schimbam valoarea scriind, de exemplu, "<b>x = 10</b>", asta nu va modifica valoarea obiectului, ci va crea un obiect nou in memorie cu valoarea 10 (si acum avem 2 obiecte - cel cu valoarea 2 si cel cu valoarea 10), apoi <b>x</b> primeste noua adresa catre acel obiect, iar in cazul in care nu mai exista referinte catre vechiul obiect, acesta este sters.
 
-Care este diferenta dintre 2 obiecte in memorie? Acestea nu se diferentiaza prin valoare (putem avea "<b>x = 5</b>" si "<b>y = 5</b>", doua obiecte diferite cu aceeasi valoare). In schimb, obiectele au <b>id-uri</b> (identificatoare unice sub forma de numere), care pot fi aflate prin instructiunea "<b>id(variabila)</b>".
+Care este diferenta dintre 2 obiecte in memorie? Acestea se diferentiaza prin <b>identificatoare</b> (care sunt unice, sub forma de numere), iar 2 obiecte au ID-uri diferite cand au valori diferite. 
 
-    x = 2
-    y = 2
-    print(f"x: {id(x)}") 
-    print(f"y: {id(y)}")
-    # cele 2 obiecte vor avea id-uri diferite intre ele (sunt 2 obiecte diferite)
-    # de fiecare data cand programul ruleaza, se vor afisa id-uri diferite fata de ultima rulare; memoria se schimba mereu
+    x = 1
+    y = 1
+    # id-urile pentru x si y sunt egale
+    print(id(x))
+    print(id(y))
+
+    # -------------------------------------------
+
+    a = 2
+    b = x + 1
+    c = y * 2
+    # id-urile pentru a, b, c cum sunt?
+    print(id(a))
+    print(id(b))
+    print(id(c))
 
 Exista 2 tipuri de date in <b>Python</b> - <b>mutabile</b> si <b>imutabile</b>. Un <b>obiect mutabil</b> este unul care isi poate schimba valoarea (si in acelasi timp sa isi pastreze id-ul); altfel, daca nu isi poate modifica valoarea in memorie, este <b>imutabil</b>. Majoritatea tipurilor de date din <b>Python</b> sunt imutabile, adica valorile lor in memorie nu pot fi modificate; printre acestea se regasesc <b>int</b>, <b>float</b>, <b>bool</b>, <b>str</b>, <b>tuple</b>, etc.
 
@@ -230,31 +239,31 @@ Revenind la subiectul initial - cand o functie primeste un parametru, ea de fapt
 
 O <b>variabila globala</b> este o variabla declarata in afara oricarei functii. Se pot declara variabile locale care au acelasi nume ca variabilele globale; in acest caz, in interiorul functiei se va lucra cu variabilele locale.
 
-    def f():
+    def f1():
         x = 5
         print(x)
     
     x = 0
-    f() # se va afisa 5
+    f1() # se va afisa 5
     
     # -------------------------------------------
 
-    def f():
+    def f2():
         for x in nums:
             print(x ** 2, end = " ")
             
     nums = [3, 4, 5, 6]
-    f() # se va afisa 9 16 25 36
+    f2() # se va afisa 9 16 25 36
     
     # -------------------------------------------
 
     # ce se intampla aici?
-    def f():
+    def f3():
         print(nums)
         nums = [10]
         
     nums = [5]
-    f()
+    f3()
     print(nums)
 
 Cuvantul cheie "<b>global</b>" urmat de numele unei variabile este utilizat pentru a specifica functiei sa lucreze cu acea variabila din exterior (din programul principal), schimbarile asupra ei regasindu-se si in afara functiei (de exemplu, reatribuiri).
@@ -281,17 +290,17 @@ Ca si ultim detaliu, functiile imbricate se pot privi in felul urmator: consider
     # de exemplu, puteti comenta anumite linii cum ar fi cea cu "nonlocal z", vedeti ce se intampla
     
     def f(x, y = 1):
-    global a
-    z = a * (x + y) ** 2
+        global a
+        z = a * (x + y) ** 2
 
-    def g(t):
-        nonlocal z
-        global b
+        def g(t):
+            nonlocal z
+            global b
         
-        z *= b 
-        return z - t
+            z *= b 
+            return z - t
 
-    return g(5)
+        return g(5)
 
     a = 0.5
     b = 10
@@ -302,7 +311,7 @@ ___
 ## 2 - Functii lambda
 O <b>functie lambda</b> este o functie fara nume, cu unul sau mai multi parametri, care returneaza o valoare furnizata de o singura expresie; ele nu pot contine instructiuni sau mai multe expresii, sunt scurte si nu mai pot fi apelate in alte parti din program (pentru ca nu au nume).
 
-Vor fi utilizate cel mai mult in <b>sortari</b> (urmatoarea sectiune).
+Functiile lambda pot avea mai multe tipuri de parametri - <b>simpli</b>, <b>impliciti</b> si <b>numar variabil</b>, si pot returna tupluri de valori. Ele vor fi utilizate cel mai mult in <b>sortari</b> (urmatoarea sectiune).
 
     t = [0, 1, 2, 3, 4, 5]
     aux = (lambda x: len([i for i in x if i % 2]))(t)
@@ -311,7 +320,7 @@ Vor fi utilizate cel mai mult in <b>sortari</b> (urmatoarea sectiune).
     # -------------------------------------------
 
     aux = (lambda x, y, z: x ** 3 + y ** 2 - z)(3, 3, 2)
-    print(aux) // ce se afiseaza?
+    print(aux) # ce se afiseaza?
     
     # -------------------------------------------
 
