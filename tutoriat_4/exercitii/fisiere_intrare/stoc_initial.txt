@@ -1,0 +1,3 @@
+mere, 50
+banane, 30
+portocale, 40

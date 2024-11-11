@@ -1,0 +1,5 @@
+mere, 10
+banane, 5
+mere, 7
+portocale, 3
+banane, 6

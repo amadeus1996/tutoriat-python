@@ -1,0 +1,5 @@
+Maria, 10
+Ion, 15
+Ana, 5
+Maria, 8
+Ion, 10

@@ -1,0 +1,5 @@
+Cont1, depunere, 100
+Cont2, depunere, 200
+Cont1, retragere, 50
+Cont2, retragere, 150
+Cont1, retragere, 70
