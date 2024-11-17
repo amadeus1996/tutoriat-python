@@ -9,6 +9,24 @@
 ---
 
 ## 1 - Introducere în Complexități
+# Tutoriat 5 - Complexități
+
+## Table of contents
+- [Introducere în Complexități](#1---introducere-în-complexități)
+- [Complexitatea de Timp și de Memorie](#2---complexitatea-de-timp-și-de-memorie)
+- [Complexitățile Funcțiilor Implicite în Python](#3---complexitățile-funcțiilor-# Tutoriat 5 - Complexități
+
+## Table of contents
+- [Introducere în Complexități](#1---introducere-în-complexități)
+- [Complexitatea de Timp și de Memorie](#2---complexitatea-de-timp-și-de-memorie)
+- [Complexitățile Funcțiilor Implicite în Python](#3---complexitățile-funcțiilor-implicite-în-python)
+- [Functii Recursive](#4---functii-recursive)
+- [Exerciții Practice](#5---exerciții-practice)
+- [Exercitii Extra](#6---exercitii-extra)
+
+---
+
+## 1 - Introducere în Complexități
 
 ### 1.1 - Ce sunt complexitățile?
 Complexitățile sunt o metodă de a analiza și evalua **eficiența algoritmilor**. Aceasta implică determinarea resurselor necesare pentru a executa un algoritm, cum ar fi timpul de rulare și memoria utilizată, în funcție de dimensiunea intrării.
@@ -121,7 +139,36 @@ Reprezintă cantitatea de memorie suplimentară utilizată de un algoritm în fu
 
 ---
 
-## 4 - Exerciții Practice
+## 4 - Functii recursive
+O functie recursiva, in general, este o functie care se autoapeleaza.
+
+Un exemplu fundamental: factorialul unui numar. Sa presupunem ca vrem sa definim o functie recursiva <b>def factorial(n)</b>, care sa returneze factorialul unui numar natural <b>n</b>. Se stie ca <b>n! = 1 * 2 * ... * n</b>, deci <b>n! = n * (n - 1)!</b>, adica am putea gandi functia noastra asa: <b>factorial(n) = n * factorial(n - 1)</b> (aici intervine autoapelul).
+
+Unde se termina autoapelurile? De exemplu, <b>factorial(15) = 15 * factorial(14)</b>, apoi <b>factorial(14) = 14 * factorial(13)</b>, etc. Urmarind aceasta logica, functia ar trebui sa se autoapeleze la infinit; din acest motiv, orice functie recursiva trebuie sa contina un caz de baza (o conditie de stop). In cazul functiei <b>factorial</b>, am putea considera cazul de baza ca fiind <b>n == 1</b>:
+
+    def factorial(n):
+        if n <= 1: # daca ajungem la n = 1 SAU input-ul e un numar negativ, functia returneaza 1
+            return 1 
+        return n * factorial(n - 1) # altfel, apelul curent returneaza n * factorial(n - 1)
+    
+    # exemplu:
+    # factorial(3) = 3 * factorial(2)
+    # factorial(2) = 2 * factorial(1)
+    # factorial(1) = 1
+    
+    # factorial(2) = 2 * 1 = 2
+    # factorial(3) = 3 * 2 = 6
+    
+Calculul din exemplul de mai sus ilustreaza comportamentul functiilor recursive; se foloseste o stiva (principiul <b>LIFO</b> - last in, first out). De fiecare data cand se apeleaza functia, se salveaza pe stiva un return address (o adresa care retine linia unde ar trebui sa se intoarca functia dupa ce a terminat apelurile recursive), argumente, variabile locale, etc. Odata ce s-a ajuns la cazul de baza (acesta fiind ultimul element adaugat pe stiva/stack), atunci vor incepe pop-urile.
+
+    def f(n):
+        ... instructiuni
+        f(n - 1):         stack-ul va retine un return address pentru cand iese din apel
+        ... instructiuni: aici va fi return address-ul
+
+---
+
+## 5 - Exerciții Practice
 
 1. **Determină complexitatea** pentru următoarele funcții:
     ```python
@@ -174,4 +221,43 @@ Reprezintă cantitatea de memorie suplimentară utilizată de un algoritm în fu
     print("Execution time:", time.time() - start)
     ```
 
---- 
+---
+
+## 6 - Exercitii Extra
+Determinati complexitatile de timp pentru urmatoarele secvente de cod:
+
+    # EX 1
+    a = 0
+    b = 0
+    for i in range(N):
+        a += 1
+    for i in range(M):
+        b += 1
+
+    # ----------------------------
+
+    # EX 2
+    k = 0
+    i, j = n // 2, 2
+    while i <= n:
+        while j <= n:
+            k += n / 2
+            j *= 2
+        i += 1
+        
+    # ----------------------------
+    
+    # EX 3
+    a = 0
+    i = n
+    while i > 0:
+        a += i
+        i //= 2
+        
+    # ----------------------------    
+        
+    # EX 4
+    k = 0
+    for i in range(n):
+        for j in range(i):
+            k += 1
