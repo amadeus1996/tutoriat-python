@@ -11,24 +11,6 @@
 ---
 
 ## 1 - Introducere în Complexități
-# Tutoriat 5 - Complexități
-
-## Table of contents
-- [Introducere în Complexități](#1---introducere-în-complexități)
-- [Complexitatea de Timp și de Memorie](#2---complexitatea-de-timp-și-de-memorie)
-- [Complexitățile Funcțiilor Implicite în Python](#3---complexitățile-funcțiilor-# Tutoriat 5 - Complexități
-
-## Table of contents
-- [Introducere în Complexități](#1---introducere-în-complexități)
-- [Complexitatea de Timp și de Memorie](#2---complexitatea-de-timp-și-de-memorie)
-- [Complexitățile Funcțiilor Implicite în Python](#3---complexitățile-funcțiilor-implicite-în-python)
-- [Functii Recursive](#4---functii-recursive)
-- [Exerciții Practice](#5---exerciții-practice)
-- [Exercitii Extra](#6---exercitii-extra)
-
----
-
-## 1 - Introducere în Complexități
 
 ### 1.1 - Ce sunt complexitățile?
 Complexitățile sunt o metodă de a analiza și evalua **eficiența algoritmilor**. Aceasta implică determinarea resurselor necesare pentru a executa un algoritm, cum ar fi timpul de rulare și memoria utilizată, în funcție de dimensiunea intrării.
