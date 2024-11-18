@@ -19,7 +19,7 @@ Pana acum am facut:
 
 3. **Catalog de cărți**: Ai un fișier ```carti.txt``` în care fiecare linie conține informații despre o carte: **titlul**, **autorul** și **anul publicării**, separate prin virgulă (ex. Harry Potter, J.K. Rowling, 1997). Creează un program care:
 
-- Citește fișierul și creează un dicționar în care cheia este autorul, iar valoarea este o listă de titluri ale cărților acestuia.
+- Citește fișierul și creează un dicționar în care cheia este autorul, iar valoarea este un dictioncar cu cheia titlul cartii si valoarea anul publicarii.
 - Întoarce o listă cu toți autorii unici și o listă cu toate cărțile scrise de un autor specificat de utilizator.
 - Scrie datele într-un fișier catalog_autori.txt, grupate pe autori.
 
