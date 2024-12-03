@@ -5,9 +5,9 @@
 
 ---
 
-## 1 - Introducere in Tehnica Greedy
+## 1 - Introducere In Tehnica Greedy
 #### 1.1. La ce se foloseste?
-Tehnica de programare <b>Greedy</b> este (uneori) utilizata in probleme de optimizare de tipul urmator: <b>se da o multime A; sa se determine o submultime B (din A), astfel incat ... (conditii)</b>. Ideea este ca la fiecare pas vom selecta cel mai "bun" element disponibil in functie de niste criterii de selectie, iar aceste rezultate vor fi combinate pentru a obtine o solutie finala. Asadar, noi aflam un <b>optim global</b> combinand <b>optimele locale</b>.
+Tehnica de programare <b>Greedy</b> este (uneori) utilizata in probleme de optimizare de tipul urmator: <b>se da o multime A; sa se determine o submultime B (din A), astfel incat ... (conditii)</b>. Ideea este ca la fiecare pas vom selecta cel mai "bun" element disponibil dupa niste criterii, iar aceste rezultate vor fi combinate pentru a obtine o solutie finala. Asadar, noi aflam un <b>optim global</b> combinand <b>optimele locale</b>.
 
 <b>Ce sunt optimele locale si globale?</b> Sa luam, de exemplu, distanta dintre 2 puncte <b>X</b> si <b>Y</b> pe un graf. In graful de mai jos, distanta minima de la <b>X</b> la <b>Y</b> este data de muchiile <b>(X, A)</b> si <b>(A, Y)</b> (5+1=6), acesta fiind <b>optimul global</b> (solutia finala). Totusi, daca ar fi sa luam muchia de lungime minima incepand din <b>X</b>, aceasta ar fi <b>(X, B)</b>; chiar daca nu este o alegere corecta pentru solutia finala, ea este un <b>optim local</b> (cel mai scurt drum la pasul respectiv). Dupa cum se poate observa, combinarea <b>optimelor locale</b> nu furnizeaza intotdeauna un <b>optim global</b> corect.
 
@@ -24,7 +24,6 @@ A = [4, 3, 1, 6, 2]
 
 # 2. facem o prelucrare a datelor de intrare (in general sortari dupa un criteriu)
 # in cazul nostru, vrem cele mai mari numere (sortam invers dupa valoare)
-# acest pas este optional
 A.sort(reverse = True)
 
 # submultimea B (solutia noastra) trebuie sa indeplineasca urmatoarea conditie:
@@ -43,27 +42,35 @@ for num in A:
     else:
         break
         
-# 4. afisam solutia
+# 5. afisam solutia
 print(B)
 ```
 
-Este important de stiut ca, in principal, rezolvarile <b>Greedy</b> vor avea complexitate <b>O(nlogn)</b> din cauza sortarilor, dar exista si probleme unde nu trebuie sa facem prelucrari pe datele de intrare, deci vor lipsi sortarile iar complexitatea finala va depinde de dimensiunea datelor de intrare.
+Este important de stiut ca, in principal, rezolvarile <b>Greedy</b> vor avea complexitate <b>O(nlogn)</b> din cauza sortarilor, dar exista si probleme unde nu trebuie sa facem prelucrari pe datele de intrare, deci vor lipsi sortarile, iar complexitatea finala va depinde de dimensiunea datelor de intrare.
 
-#### 1.3. In ce situatii nu functioneaza Greedy?
-Asa cum am mentionat si inainte, combinarea <b>optimelor locale</b> uneori nu rezulta intr-un <b>optim global</b> corect.
+#### 1.4. Corectitudinea solutiilor Greedy
+In general, demonstratiile pentru corectitudinea problemelor rezolvate cu Greedy nu au neaparat o structura care poate fi urmata; fiecare demonstratie difera putin, dar majoritatea rezolvarilor sunt intuitive, iar argumentarile nu vor fi grele.
+
+De exemplu, pentru problema anterioara cu sume - solutia furnizata de tehnica Greedy este <b>G = [6, 4]</b>. Sa presupunem ca exista o alta solutie mai buna: asta ar insemna ca solutia optima contine mai putine elemente (in cazul nostru - ar avea un element). Evident, acel element ar fi mai mare decat elementul <b>6</b> din solutia <b>G</b>. Totusi, daca acest lucru ar fi fost adevarat, atunci algoritmul Greedy pe care l-am scris l-ar fi selectat si l-ar fi inclus in solutie; algoritmul selecteaza mereu cel mai mare element posibil. In concluzie, presupunerea noastra a fost falsa iar solutia <b>G</b> este optima, avand numarul minim de elemente posibil.
+
+Vor mai fi 2 exemple de probleme rezolvate mai jos, impreuna cu demonstratii similare pentru corectitudine.
+ 
+#### 1.5. In ce situatii nu functioneaza Greedy?
+De obicei, problemele Greedy satisfac 2 proprietati:
+1. <b>Proprietatea substructurii optime</b> - o problema indeplineste aceasta proprietate in cazul in care solutia optima contine solutii optime ale subproblemelor.
+2. <b>Proprietatea alegerii greedy</b> - se poate ajunge la solutia optima globala a problemei, efectuand alegeri optime locale. Solutia optima a problemei fie este construita prin tehnica Greedy, fie poate fi transformata intr-o alta solutie optima pe baza acestei tehnici.
+
+Asa cum am mentionat si inainte, combinarea <b>optimelor locale</b> uneori nu rezulta intr-un <b>optim global</b> corect. Cateodata este util sa avem si proprietatile de mai sus in minte, dar cel mai des si mai practic este sa gasim un contraexemplu unde selectarea unui optim local va conduce la o solutie mai putin buna.
 
 Sa spunem ca vrem sa platim o suma de <b>10</b> lei utilizand cat mai putine bancnote, avand la dispozitie un numar nelimitat de bancnote de <b>1</b>, <b>2</b> sau <b>4</b> lei. La fiecare pas, incercam sa platim de cat de multe ori putem cu cea mai mare bancnota posibila => sortam bancnotele descrescator dupa valoare; platim de doua ori cu <b>4</b> lei si o data cu <b>2</b> lei, asadar solutia optima consta in 3 bancnote.
 
-Daca vrem sa platim aceeasi suma de <b>10</b> lei cu bancnote de <b>1</b>, <b>5</b> si <b>7</b> lei si aplicam tehnica <b>Greedy</b>, algoritmul va da gres. Logica ramane aceeasi - sortam descrescator bancnotele si incercam sa platim cu cele mai mari disponibile: una de <b>7</b> lei si trei de <b>1</b> leu => 4 bancnote in total, dar solutia optima se obtine realizand plata cu doua bancnote de <b>5</b> lei.
+Daca vrem sa platim aceeasi suma de <b>10</b> lei cu bancnote de <b>1</b>, <b>5</b> si <b>7</b> lei si aplicam iar tehnica <b>Greedy</b>, algoritmul va da gres. Logica ramane aceeasi - sortam descrescator bancnotele si incercam sa platim cu cele mai mari disponibile: una de <b>7</b> lei si trei de <b>1</b> leu => 4 bancnote in total, dar solutia optima se obtine realizand plata cu doua bancnote de <b>5</b> lei.
 
 ---
 
 ## 2 - Exemple
 #### Exercitiul 1
-<b>Cerinta</b>: Gigel este un cantaret incepator. El stie sa cante <b>N</b> piese, iar pentru fiecare piesa se cunoaste durata (exprimata in minute si secunde). Gigel va participa la o emisiune de televiziune, unde va putea canta timp de <b>T</b> secunde. El vrea sa cante cat mai multe piese, pentru a-si demonstra talentul deosebit.
-
-<b>Intuitie</b>: vrem sa avem cat mai multe piese, deci le selectam pe cele cu duratele cele mai scurte. Sortam piesele dupa durata (prelucrare a datelor de intrare) si incercam sa includem cat mai multe, avand grija sa nu depasim durata totala de <b>T</b> secunde.
-
+<b>Cerinta</b>: Gigel este un cantaret incepator. El stie sa cante <b>N</b> piese, iar pentru fiecare piesa se cunoaste durata (exprimata in minute si secunde). Gigel va participa la o emisiune de televiziune, unde va putea canta timp de <b>T</b> secunde. El vrea sa cante cat mai multe piese, pentru a-si demonstra talentul deosebit. In fisierul <b>"piese.in"</b> se gasesc toate piesele din repertoriu, cu durata in minute si secunde. Sa se scrie in fisierul <b>"piese.out"</b> melodiile care au fost selectate sa fie interpretate, cu durata fiecareia (in secunde) si durata totala.
 
 ```
 piese.in
@@ -87,8 +94,10 @@ Piesa 8: 180s
 Durata totala: 594/600
 ```
 
+<b>Intuitie</b>: vrem sa avem cat mai multe piese, deci le selectam pe cele cu duratele cele mai scurte. Sortam piesele dupa durata (prelucrare a datelor de intrare) si incercam sa includem cat mai multe, avand grija sa nu depasim durata totala de <b>T</b> secunde.
+
 ```python
-# citirea datelor
+# 1. citirea datelor
 # o piesa va fi memorata intr-un tuplu de forma (nr_piesa, durata_secunde)
 with open("piese.in") as f:
     T = int(f.readline()[:-2])
@@ -97,45 +106,56 @@ with open("piese.in") as f:
         aux = linie.split()
         t.append((int(aux[1]), int(aux[2][:2]) * 60 + int(aux[2][3:5])))
 
+# 2. prelucrarea datelor
 sol = []
 aux = T 
 t.sort(key = lambda x: x[1]) # sortam ca sa avem piesele cu cea mai scurta durata
 
+# 3. parcurgerea elementelor
 for piesa in t:
+    # 4. criteriul de selectie
     # cat timp nu depasim durata T, adaugam cea mai scurta piesa
     if aux - piesa[1] < 0:
         break
     aux -= piesa[1]
     sol.append(piesa)
 
+# 5. afisarea solutiei
 with open("piese.out", "w") as g:
     for piesa in sol:
         g.write(f"Piesa {piesa[0]}: {piesa[1]}s\n")
     g.write(f"Durata totala: {T - aux}/{T}\n")
 ```
 
+<b>Argumentarea corectitudinii</b>: presupunand ca ar exista o solutie mai buna decat solutia furnizata, asta ar insemna ca solutia optima ar avea (macar) o piesa in plus. In acest caz, ar exista piese in datele de intrare cu durate mai scurte, care nu au fost incluse (de exemplu - noi am selectat o piesa mai lunga care ar fi putut sa fie inlocuita cu alte 2 piese mai scurte, deci putem sa facem rost de o piesa in plus). Acest lucru nu este posibil, deoarece algoritmul nostru a sortat crescator piesele si le-a selectat mereu pe cele mai scurte, asadar este imposibil sa existe alte piese mai scurte. In concluzie, nu exista o solutie mai buna decat cea prezentata.
+
 #### Exercitiul 2
 <b>Cerinta</b>: se citeste o lista de <b>N</b> numere intregi si un numar natural <b>k (<= N)</b>. Sa se calculeze suma maxima care poate fi obtinuta (adunand elementele din lista), schimband semnul a exact <b>k</b> elemente (aflate pe pozitii distincte). Pentru lista <b>[-5, 7, -3, 4, 5]</b> si <b>k=3</b>, solutia este <b>16</b>, deoarece (-4)+5+3+7+5=16.
 
 <b>Intuitie</b>: cand schimbam semnul la numere negative, vrem sa le alegem mai intai pe cele mai mici, deoarece <b>-X < -Y</b> dar <b>X > Y</b>. De asemenea, cand schimbam semnul la numere pozitive, le vrem pe cele mai mici: este mai ok sa schimbam <b>1</b> in <b>-1</b> decat sa schimbam <b>10</b> in <b>-10</b>.
 
-In concluzie, sortam lista => facem o prelucrare initiala a datelor de intrare. Vrem sa schimbam semnul la cele mai mici numere negative, iar daca numarul de numere negative este mai mic decat <b>k</b>, mai intai "consumam" toate numerele negative si apoi trecem la cele mai mici numere pozitive. 
+In concluzie, sortam lista crescator (facem o prelucrare initiala a datelor de intrare). Vrem sa schimbam semnul la cele mai mici numere negative, iar daca numarul de numere negative este mai mic decat <b>k</b>, atunci vom "consuma" toate numerele negative si trecem la cele mai mici numere pozitive; asta inseamna ca, pur si simplu, luam primele <b>k</b> numere din sir si le schimbam semnul.
 
 ```python
-# datele de intrare
+# 1. citirea datelor de intrare
 t = [4, -5, 2, 7, -1, 5, 6, -3, 4]
 k = 5
 
-# sortam lista ca sa putem face transformarile optime de semn
+# 2. prelucrarea datelor de intrare
 t.sort()
 
 suma = 0
+# 3. parcurgerea elementelor
 # luam primele k numere si le schimbam semnul, le adunam
 for i in range(k):
-    suma += (~t[i] + 1) # stiti de la ASC ca asa se schimba semnul unui nr :)
+    # 4. criteriul de selectie nu este necesar
+    suma += (~t[i] + 1) # schimbam semnul ca la ASC :)
     
-print(suma + sum(t[k:])) # adunam numerele ramase si afisam rezultatul
+# 5. mai adunam numerele ramase, apoi afisam solutia
+print(suma + sum(t[k:]))
 ```
+
+<b>Argumentarea corectitudinii</b>: daca ar exista o solutie mai buna decat cea prezentata, asta ar insemna ca ar exista o suma posibila mai mare. Sunt doua moduri principale prin care acest lucru este posibil: am schimbat semnul la un numar negativ nepotrivit, sau un numar pozitiv nepotrivit. Pentru a asigura o suma maxima posibila, avem nevoie de cele mai mici numere negative, SAU toate numerele negative, SAU toate nr. negative impreuna cu cele mai mici nr. pozitive. Algoritmul de mai sus sorteaza crescator sirul de numere, asadar primele <b>k</b> numere sunt optiunile optime pentru schimbarea de semn, fiind cele mai mici numere negative, urmate de cele mai mici numere pozitive. In concluzie, este imposibil ca acest algoritm sa fi schimbat vreun semn nepotrivit, deci solutia este optima.
 
 ---
 
