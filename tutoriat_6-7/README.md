@@ -48,19 +48,19 @@ print(B)
 
 Este important de stiut ca, in principal, rezolvarile <b>Greedy</b> vor avea complexitate <b>O(nlogn)</b> din cauza sortarilor, dar exista si probleme unde nu trebuie sa facem prelucrari pe datele de intrare, deci vor lipsi sortarile, iar complexitatea finala va depinde de dimensiunea datelor de intrare.
 
-#### 1.4. Corectitudinea solutiilor Greedy
+#### 1.3. Corectitudinea solutiilor Greedy
 In general, demonstratiile pentru corectitudinea problemelor rezolvate cu Greedy nu au neaparat o structura care poate fi urmata; fiecare demonstratie difera putin, dar majoritatea rezolvarilor sunt intuitive, iar argumentarile nu vor fi grele.
 
 De exemplu, pentru problema anterioara cu sume - solutia furnizata de tehnica Greedy este <b>G = [6, 4]</b>. Sa presupunem ca exista o alta solutie mai buna: asta ar insemna ca solutia optima contine mai putine elemente (in cazul nostru - ar avea un element). Evident, acel element ar fi mai mare decat elementul <b>6</b> din solutia <b>G</b>. Totusi, daca acest lucru ar fi fost adevarat, atunci algoritmul Greedy pe care l-am scris l-ar fi selectat si l-ar fi inclus in solutie; algoritmul selecteaza mereu cel mai mare element posibil. In concluzie, presupunerea noastra a fost falsa iar solutia <b>G</b> este optima, avand numarul minim de elemente posibil.
 
 Vor mai fi 2 exemple de probleme rezolvate mai jos, impreuna cu demonstratii similare pentru corectitudine.
  
-#### 1.5. In ce situatii nu functioneaza Greedy?
+#### 1.4. In ce situatii nu functioneaza Greedy?
 De obicei, problemele Greedy satisfac 2 proprietati:
 1. <b>Proprietatea substructurii optime</b> - o problema indeplineste aceasta proprietate in cazul in care solutia optima contine solutii optime ale subproblemelor.
 2. <b>Proprietatea alegerii greedy</b> - se poate ajunge la solutia optima globala a problemei, efectuand alegeri optime locale. Solutia optima a problemei fie este construita prin tehnica Greedy, fie poate fi transformata intr-o alta solutie optima pe baza acestei tehnici.
 
-Asa cum am mentionat si inainte, combinarea <b>optimelor locale</b> uneori nu rezulta intr-un <b>optim global</b> corect. Cateodata este util sa avem si proprietatile de mai sus in minte, dar cel mai des si mai practic este sa gasim un contraexemplu unde selectarea unui optim local va conduce la o solutie mai putin buna.
+Asa cum am mentionat si inainte, combinarea <b>optimelor locale</b> uneori nu rezulta intr-un <b>optim global</b> corect. Cateodata este util sa avem si proprietatile de mai sus in minte, dar cel mai practic este sa gasim un contraexemplu unde selectarea unui optim local va conduce la o solutie mai putin buna.
 
 Sa spunem ca vrem sa platim o suma de <b>10</b> lei utilizand cat mai putine bancnote, avand la dispozitie un numar nelimitat de bancnote de <b>1</b>, <b>2</b> sau <b>4</b> lei. La fiecare pas, incercam sa platim de cat de multe ori putem cu cea mai mare bancnota posibila => sortam bancnotele descrescator dupa valoare; platim de doua ori cu <b>4</b> lei si o data cu <b>2</b> lei, asadar solutia optima consta in 3 bancnote.
 
