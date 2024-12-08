@@ -1,3 +1,5 @@
+from queue import PriorityQueue
+
 # EX 1
 with open("input/galeti.in") as f:
     n = int(f.readline())
@@ -30,16 +32,23 @@ with open("input/probleme.in") as f:
         t.append((int(aux[0]), int(aux[1]), index))
         index += 1
 
-t.sort(key = lambda x: (x[1], -x[0]))
-sol = [t[0]]
-aux = 2
-punctaj = sol[0][0]
-
-for problema in t[1:]:
-    if problema[1] - aux >= 0:
-        aux += 1
-        punctaj += problema[0]
-        sol.append(problema)
+t.sort(key = lambda x: -x[1])
+q = PriorityQueue()
+i = 0
+sol = []
+curr_time = t[0][1] # set curr time to the maximum time
+punctaj = 0
+while curr_time > 0:
+    while i < len(t) and t[i][1] == curr_time:
+        q.put((-t[i][0], (t[i][1], t[i][2])))
+        i += 1
+    if q.empty():
+        curr_time -= 1
+        continue
+    aux = q.get()
+    sol.append((-aux[0], aux[1][0], aux[1][1]))
+    punctaj += -aux[0]
+    curr_time -= 1
 
 with open("probleme.out", "w") as g:
     g.write(f"Punctaj maxim: {punctaj}\n")

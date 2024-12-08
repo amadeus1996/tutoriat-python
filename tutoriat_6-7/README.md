@@ -167,6 +167,7 @@ Consideram <b>N</b> galeti pline cu apa (<b>1 <= N <= 10000</b>) cu proprietatea
 galeti.in
 6
 30 6 62 5 133 14
+153
 ```
 
 ```
