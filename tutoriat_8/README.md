@@ -112,14 +112,16 @@ A doua metodă constă în utilizarea teoremei master pentru a afla direct solu�
 
 ![arbore-master](assets/arbore-master.png)
 
-**Teorema master**: Fie o relatie de recurenta de forma (3) si presupunem faptul ca f ∈ O(n<sup>p</sup>). Atunci:
-a) daca p < log<sub>b</sub>a, atunci T(n) ∈ O(n<sup>log<sub>b</sub>a</sup>);
-b) daca p = log<sub>b</sub>a, atunci T(n) ∈ O(n<sup>p</sup> log<sub>2</sub>n);
-c) daca p > log<sub>b</sub>a si ∃c < 1 astfel incat af(n/b) <= cf(n) pentru orice n suficient de mare, atunci T(n) ∈ O(f(n))
+**Teorema master**: Fie o relatie de recurenta de forma (3) si presupunem faptul ca f ∈ O(n<sup>p</sup>). Atunci:  
+a) daca p < log<sub>b</sub>a, atunci T(n) ∈ O(n<sup>log<sub>b</sub>a</sup>);  
+b) daca p = log<sub>b</sub>a, atunci T(n) ∈ O(n<sup>p</sup> log<sub>2</sub>n);  
+c) daca p > log<sub>b</sub>a si ∃c < 1 astfel incat af(n/b) <= cf(n) pentru orice n suficient de mare, atunci T(n) ∈ O(f(n))   
 
-**Exemple**:
-![teorema-master](assets/teorema-master.png)
-
+ 
+**Exemple**:  
+![teorema-master](assets/teorema-master.png)  
+  
+  
 ## Exemple
 
 1. Gaseste elementul maxim dintr-o lista L
